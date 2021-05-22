@@ -165,7 +165,7 @@ namespace Bulk_RMA
         void AddLine(string customer,string customername,string invoiceno,string stockcode,string stockdescription,double Qty,string Reasoncode,string Reasondesciption,string Lot)
         {
             Connection.openconnection();
-            Connection.cmd = new SqlCommand("INSERT INTO [dbo].[BulkRMA] ([Customer],[CustomerName],[InvoiceNo],[StockCode],[Description],[Qty],[ReasonCode],[ReasonDescription],[Lot]) VALUES (@Customer,@CustomerName,@InvoiceNo,@StockCode,@Description,@Qty,@ReasonCode,@ReasonDescription,@Lot"),Connection.con);
+            Connection.cmd = new SqlCommand("INSERT INTO [dbo].[BulkRMA] ([Customer],[CustomerName],[InvoiceNo],[StockCode],[Description],[Qty],[ReasonCode],[ReasonDescription],[Lot]) VALUES (@Customer,@CustomerName,@InvoiceNo,@StockCode,@Description,@Qty,@ReasonCode,@ReasonDescription,@Lot)",Connection.con);
 
             Connection.cmd.Parameters.AddWithValue("Customer", customer);
             Connection.cmd.Parameters.AddWithValue("CustomerName", customername);
@@ -178,16 +178,41 @@ namespace Bulk_RMA
             Connection.cmd.Parameters.AddWithValue("Lot", Lot);
             Connection.cmd.ExecuteNonQuery();
 
-            con.setMessageBox("Record saved successfully", 1);
+            con.setMessageBox("Line Added successfully", 1);
+
+            Loadgrid();
+
+            Connection.closeconnection();
+        }
+        void Loadgrid()
+        {
+
+            Connection.openconnection();
+
+            //Connection.filldtg(dataGridView1, "SELECT DISTINCT dbo.LoanDetails.IdNumber AS[Id Number], dbo.LoanDetails.Name, dbo.LoanDetails.LoanName AS[Loan Name], FORMAT(dbo.LoanDetails.PrincipalAmount, '#,#') AS[Principal Loan Amount],dbo.LoanDetails.ApplicationDate AS[Application Date], FORMAT(dbo.LoanDetails.LoanBalance, '#,#') AS[Loan Balance], MAX(dbo.LoanPayments.Paydate) AS[Last Paydate], dbo.LoanDetails.NextPayDate AS[Next Paydate],FORMAT(dbo.LoanDetails.MonthlyPayment, '#,#') AS[Monthly Payment], FORMAT(dbo.LoanDetails.MonthlyPayment, '#,#') AS[Amount Overdue]FROM dbo.LoanDetails INNER JOIN dbo.LoanPayments ON dbo.LoanDetails.IdNumber = dbo.LoanPayments.IdNumber AND dbo.LoanDetails.ApplicationDate = dbo.LoanPayments.LoanAppdate WHERE(dbo.LoanDetails.LoanBalance <> 0) GROUP BY dbo.LoanDetails.IdNumber, dbo.LoanDetails.Name, dbo.LoanDetails.LoanName, dbo.LoanDetails.PrincipalAmount, dbo.LoanDetails.ApplicationDate, dbo.LoanDetails.LoanBalance, dbo.LoanDetails.MonthlyPayment,dbo.LoanDetails.NextPayDate");
+
+
+            Connection.cmd = new SqlCommand("SELECT * FROM BulkRMA", Connection.con);
+            Connection.dr = Connection.cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            dataGridView1.Rows.Clear();
+            while (Connection.dr.Read() == true)
+            {
+                dataGridView1.Rows.Add(Connection.dr[0], Connection.dr[1], Connection.dr[2], Connection.dr[3], Connection.dr[4], Connection.dr[5], Connection.dr[6], Connection.dr[7], Connection.dr[8]);
+
+            }
+            Connection.dr.Close();
+
+
 
 
 
             Connection.closeconnection();
+
         }
 
         private void radButton2_Click(object sender, EventArgs e)
         {
-
+            AddLine(txtCustomercode.Text, txtCustomername.Text, txtInvoice.Text, cboStockCode.Text, txtDescription.Text,double.Parse (txtQty.Text ), cboreasonCode.Text, txtproblemdescription.Text, txtLot.Text);
         }
     }
 }

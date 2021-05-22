@@ -32,7 +32,7 @@ namespace Bulk_RMA
             this.radDock1 = new Telerik.WinControls.UI.Docking.RadDock();
             this.documentWindow1 = new Telerik.WinControls.UI.Docking.DocumentWindow();
             this.radButton5 = new Telerik.WinControls.UI.RadButton();
-            this.radTextBox7 = new Telerik.WinControls.UI.RadTextBox();
+            this.txtLot = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.radButton4 = new Telerik.WinControls.UI.RadButton();
             this.radButton3 = new Telerik.WinControls.UI.RadButton();
@@ -40,11 +40,11 @@ namespace Bulk_RMA
             this.txtproblemdescription = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
             this.txtDescription = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox5 = new Telerik.WinControls.UI.RadTextBox();
+            this.txtQty = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.radTextBox3 = new Telerik.WinControls.UI.RadTextBox();
+            this.txtInvoice = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.txtCustomername = new Telerik.WinControls.UI.RadTextBox();
@@ -68,7 +68,7 @@ namespace Bulk_RMA
             this.radDock1.SuspendLayout();
             this.documentWindow1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
@@ -76,11 +76,11 @@ namespace Bulk_RMA
             ((System.ComponentModel.ISupportInitialize)(this.txtproblemdescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomername)).BeginInit();
@@ -123,7 +123,7 @@ namespace Bulk_RMA
             this.documentWindow1.Controls.Add(this.cboreasonCode);
             this.documentWindow1.Controls.Add(this.cboStockCode);
             this.documentWindow1.Controls.Add(this.radButton5);
-            this.documentWindow1.Controls.Add(this.radTextBox7);
+            this.documentWindow1.Controls.Add(this.txtLot);
             this.documentWindow1.Controls.Add(this.radLabel8);
             this.documentWindow1.Controls.Add(this.radButton4);
             this.documentWindow1.Controls.Add(this.radButton3);
@@ -131,11 +131,11 @@ namespace Bulk_RMA
             this.documentWindow1.Controls.Add(this.txtproblemdescription);
             this.documentWindow1.Controls.Add(this.radLabel7);
             this.documentWindow1.Controls.Add(this.txtDescription);
-            this.documentWindow1.Controls.Add(this.radTextBox5);
+            this.documentWindow1.Controls.Add(this.txtQty);
             this.documentWindow1.Controls.Add(this.radLabel6);
             this.documentWindow1.Controls.Add(this.radLabel5);
             this.documentWindow1.Controls.Add(this.radLabel4);
-            this.documentWindow1.Controls.Add(this.radTextBox3);
+            this.documentWindow1.Controls.Add(this.txtInvoice);
             this.documentWindow1.Controls.Add(this.radLabel3);
             this.documentWindow1.Controls.Add(this.radButton1);
             this.documentWindow1.Controls.Add(this.txtCustomername);
@@ -159,16 +159,16 @@ namespace Bulk_RMA
             this.radButton5.TabStop = false;
             this.radButton5.Text = "&Post";
             // 
-            // radTextBox7
+            // txtLot
             // 
-            this.radTextBox7.AutoSize = false;
-            this.radTextBox7.Enabled = false;
-            this.radTextBox7.Location = new System.Drawing.Point(490, 106);
-            this.radTextBox7.Name = "radTextBox7";
-            this.radTextBox7.ReadOnly = true;
-            this.radTextBox7.Size = new System.Drawing.Size(140, 31);
-            this.radTextBox7.TabIndex = 5;
-            this.radTextBox7.TabStop = false;
+            this.txtLot.AutoSize = false;
+            this.txtLot.Enabled = false;
+            this.txtLot.Location = new System.Drawing.Point(490, 106);
+            this.txtLot.Name = "txtLot";
+            this.txtLot.ReadOnly = true;
+            this.txtLot.Size = new System.Drawing.Size(140, 31);
+            this.txtLot.TabIndex = 5;
+            this.txtLot.TabStop = false;
             // 
             // radLabel8
             // 
@@ -240,15 +240,15 @@ namespace Bulk_RMA
             this.txtDescription.Size = new System.Drawing.Size(253, 64);
             this.txtDescription.TabIndex = 7;
             // 
-            // radTextBox5
+            // txtQty
             // 
-            this.radTextBox5.AutoSize = false;
-            this.radTextBox5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTextBox5.Location = new System.Drawing.Point(490, 37);
-            this.radTextBox5.Name = "radTextBox5";
-            this.radTextBox5.Size = new System.Drawing.Size(140, 31);
-            this.radTextBox5.TabIndex = 4;
-            this.radTextBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.radTextBox5_KeyPress);
+            this.txtQty.AutoSize = false;
+            this.txtQty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQty.Location = new System.Drawing.Point(490, 37);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(140, 31);
+            this.txtQty.TabIndex = 4;
+            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.radTextBox5_KeyPress);
             // 
             // radLabel6
             // 
@@ -274,15 +274,15 @@ namespace Bulk_RMA
             this.radLabel4.TabIndex = 5;
             this.radLabel4.Text = "Stock Code:";
             // 
-            // radTextBox3
+            // txtInvoice
             // 
-            this.radTextBox3.AutoSize = false;
-            this.radTextBox3.Enabled = false;
-            this.radTextBox3.Location = new System.Drawing.Point(113, 74);
-            this.radTextBox3.Name = "radTextBox3";
-            this.radTextBox3.Size = new System.Drawing.Size(107, 29);
-            this.radTextBox3.TabIndex = 2;
-            this.radTextBox3.TabStop = false;
+            this.txtInvoice.AutoSize = false;
+            this.txtInvoice.Enabled = false;
+            this.txtInvoice.Location = new System.Drawing.Point(113, 74);
+            this.txtInvoice.Name = "txtInvoice";
+            this.txtInvoice.Size = new System.Drawing.Size(107, 29);
+            this.txtInvoice.TabIndex = 2;
+            this.txtInvoice.TabStop = false;
             // 
             // radLabel3
             // 
@@ -492,7 +492,7 @@ namespace Bulk_RMA
             this.documentWindow1.ResumeLayout(false);
             this.documentWindow1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
@@ -500,11 +500,11 @@ namespace Bulk_RMA
             ((System.ComponentModel.ISupportInitialize)(this.txtproblemdescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCustomername)).EndInit();
@@ -541,9 +541,9 @@ namespace Bulk_RMA
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private Telerik.WinControls.UI.Docking.DocumentContainer documentContainer1;
         private Telerik.WinControls.UI.Docking.DocumentTabStrip documentTabStrip1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox3;
+        private Telerik.WinControls.UI.RadTextBox txtInvoice;
         private Telerik.WinControls.UI.RadLabel radLabel3;
-        private Telerik.WinControls.UI.RadTextBox radTextBox5;
+        private Telerik.WinControls.UI.RadTextBox txtQty;
         private Telerik.WinControls.UI.RadLabel radLabel6;
         private Telerik.WinControls.UI.RadTextBox txtDescription;
         private Telerik.WinControls.UI.RadLabel radLabel5;
@@ -554,7 +554,7 @@ namespace Bulk_RMA
         private Telerik.WinControls.UI.RadButton radButton2;
         private Telerik.WinControls.UI.RadButton radButton4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private Telerik.WinControls.UI.RadTextBox radTextBox7;
+        private Telerik.WinControls.UI.RadTextBox txtLot;
         private Telerik.WinControls.UI.RadLabel radLabel8;
         private Telerik.WinControls.UI.RadButton radButton5;
         private Telerik.WinControls.UI.RadDropDownList cboStockCode;
