@@ -12,9 +12,11 @@ namespace Bulk_RMA
 {
     public partial class Build_Post_RMA : Form
     {
+        Connection con = new Connection();
         public Build_Post_RMA()
         {
             InitializeComponent();
+           
         }
 
         private void radDock1_Click(object sender, EventArgs e)
@@ -160,18 +162,20 @@ namespace Bulk_RMA
             }
         }
 
-        void AddLine(string customer,string customername,string invoiceno,string stockcode,string stockdescription,)
+        void AddLine(string customer,string customername,string invoiceno,string stockcode,string stockdescription,double Qty,string Reasoncode,string Reasondesciption,string Lot)
         {
             Connection.openconnection();
             Connection.cmd = new SqlCommand("INSERT INTO [dbo].[BulkRMA] ([Customer],[CustomerName],[InvoiceNo],[StockCode],[Description],[Qty],[ReasonCode],[ReasonDescription],[Lot]) VALUES (@Customer,@CustomerName,@InvoiceNo,@StockCode,@Description,@Qty,@ReasonCode,@ReasonDescription,@Lot"),Connection.con);
 
-            Connection.cmd.Parameters.AddWithValue("MemberNumber", Membernumber);
-            Connection.cmd.Parameters.AddWithValue("FirstName", firstname);
-            Connection.cmd.Parameters.AddWithValue("FullName", memberfullname);
-            Connection.cmd.Parameters.AddWithValue("Gender", gender);
-            Connection.cmd.Parameters.AddWithValue("PhoneNumber", phonenumber);
-            Connection.cmd.Parameters.AddWithValue("Email", email);
-            Connection.cmd.Parameters.AddWithValue("MemberGroup", membergroup);
+            Connection.cmd.Parameters.AddWithValue("Customer", customer);
+            Connection.cmd.Parameters.AddWithValue("CustomerName", customername);
+            Connection.cmd.Parameters.AddWithValue("InvoiceNo", invoiceno);
+            Connection.cmd.Parameters.AddWithValue("StockCode", stockcode);
+            Connection.cmd.Parameters.AddWithValue("Description", stockdescription);
+            Connection.cmd.Parameters.AddWithValue("Qty", Qty);
+            Connection.cmd.Parameters.AddWithValue("ReasonCode", Reasoncode);
+            Connection.cmd.Parameters.AddWithValue("ReasonDescription", Reasondesciption);
+            Connection.cmd.Parameters.AddWithValue("Lot", Lot);
             Connection.cmd.ExecuteNonQuery();
 
             con.setMessageBox("Record saved successfully", 1);
