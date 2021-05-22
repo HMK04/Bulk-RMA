@@ -31,6 +31,7 @@ namespace Bulk_RMA
 
             LoadStocks();
             LoadRMAProblems();
+            Loadgrid();
         }
 
         void LoadRMAProblems()
@@ -87,7 +88,7 @@ namespace Bulk_RMA
             if (txtDescription.Text == "")
             {
                 Connection con = new Connection();
-                con.setMessageBox("Stock code not found", 2);
+                //con.setMessageBox("Stock code not found", 2);cboStockCode.Focus();
                 cboStockCode.Text = "";
                 cboStockCode .Focus();
             }
@@ -189,15 +190,14 @@ namespace Bulk_RMA
 
             Connection.openconnection();
 
-            //Connection.filldtg(dataGridView1, "SELECT DISTINCT dbo.LoanDetails.IdNumber AS[Id Number], dbo.LoanDetails.Name, dbo.LoanDetails.LoanName AS[Loan Name], FORMAT(dbo.LoanDetails.PrincipalAmount, '#,#') AS[Principal Loan Amount],dbo.LoanDetails.ApplicationDate AS[Application Date], FORMAT(dbo.LoanDetails.LoanBalance, '#,#') AS[Loan Balance], MAX(dbo.LoanPayments.Paydate) AS[Last Paydate], dbo.LoanDetails.NextPayDate AS[Next Paydate],FORMAT(dbo.LoanDetails.MonthlyPayment, '#,#') AS[Monthly Payment], FORMAT(dbo.LoanDetails.MonthlyPayment, '#,#') AS[Amount Overdue]FROM dbo.LoanDetails INNER JOIN dbo.LoanPayments ON dbo.LoanDetails.IdNumber = dbo.LoanPayments.IdNumber AND dbo.LoanDetails.ApplicationDate = dbo.LoanPayments.LoanAppdate WHERE(dbo.LoanDetails.LoanBalance <> 0) GROUP BY dbo.LoanDetails.IdNumber, dbo.LoanDetails.Name, dbo.LoanDetails.LoanName, dbo.LoanDetails.PrincipalAmount, dbo.LoanDetails.ApplicationDate, dbo.LoanDetails.LoanBalance, dbo.LoanDetails.MonthlyPayment,dbo.LoanDetails.NextPayDate");
+            
 
-
-            Connection.cmd = new SqlCommand("SELECT * FROM BulkRMA", Connection.con);
+            Connection.cmd = new SqlCommand("SELECT StockCode,Description,Qty,ReasonCode,Customer,Lot,InvoiceNo FROM BulkRMA", Connection.con);
             Connection.dr = Connection.cmd.ExecuteReader(CommandBehavior.CloseConnection);
             dataGridView1.Rows.Clear();
             while (Connection.dr.Read() == true)
             {
-                dataGridView1.Rows.Add(Connection.dr[0], Connection.dr[1], Connection.dr[2], Connection.dr[3], Connection.dr[4], Connection.dr[5], Connection.dr[6], Connection.dr[7], Connection.dr[8]);
+                dataGridView1.Rows.Add(Connection.dr[0], Connection.dr[1], Connection.dr[2], Connection.dr[3], Connection.dr[4], Connection.dr[5], Connection.dr[6]);
 
             }
             Connection.dr.Close();
@@ -211,8 +211,33 @@ namespace Bulk_RMA
         }
 
         private void radButton2_Click(object sender, EventArgs e)
+
         {
-            AddLine(txtCustomercode.Text, txtCustomername.Text, txtInvoice.Text, cboStockCode.Text, txtDescription.Text,double.Parse (txtQty.Text ), cboreasonCode.Text, txtproblemdescription.Text, txtLot.Text);
+            if (txtCustomercode.Text == "")
+            {
+                con.setMessageBox("Customer field can not be blank", 2);
+                txtCustomercode.Focus();
+            }
+            else if (cboStockCode.Text == "")
+            { con.setMessageBox("Stock code field can not be blank", 2); cboStockCode.Focus(); }
+            else if (txtQty.Text == "")
+            { con.setMessageBox("Qty field can not be blank", 2);txtQty.Focus(); }
+            else if (cboreasonCode.Text == "")
+            { con.setMessageBox("Reason field can not be blank", 2);cboreasonCode.Focus(); }
+            else
+            {
+                DialogResult msg = MessageBox.Show("Ok to Add Line?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (msg == DialogResult.OK)
+                {
+                    AddLine(txtCustomercode.Text, txtCustomername.Text, txtInvoice.Text, cboStockCode.Text, txtDescription.Text, double.Parse(txtQty.Text), cboreasonCode.Text, txtproblemdescription.Text, txtLot.Text);
+
+                }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
