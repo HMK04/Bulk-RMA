@@ -15,7 +15,7 @@ namespace Bulk_RMA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Build_Post_RMA());
+            Application.Run(new Login());
         }
     }
 }
